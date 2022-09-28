@@ -43,7 +43,6 @@ def split_codons(dna: str) -> list[str] | None:
 
     """
     # FIXME: Implement the function
-    return []
 
 
 def translate_codons(codons: list[str]) -> list[str]:
@@ -69,14 +68,14 @@ def translate_codons(codons: list[str]) -> list[str]:
     """
     # FIXME: Implement the function
 
-    cod = []
+    amin = []
     for codon in codons:
         codon = codon.upper() # Mayus
         if codon in CODON_MAP:
-            cod.append(CODON_MAP[codon])
+            amin.append(CODON_MAP[codon])
         else:
             return None
-    return cod
+    return amin
 
 def translate_dna(dna: str) -> str:
     """Translate a DNA string into its corresponding amino acid string.
@@ -96,6 +95,6 @@ def translate_dna(dna: str) -> str:
     """
     # FIXME: Implement the function
     if split_codons(dna) != None and translate_codons(split_codons(dna)) != None:
-        return  "".join(translate_codons(split_codons(dna)))
+        return  "".join(translate_codons(split_codons(dna))) #Concatenar string
     else: 
         return None
