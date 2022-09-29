@@ -98,3 +98,4 @@ def translate_dna(dna: str) -> str:
         return  "".join(translate_codons(split_codons(dna))) #Concatenar string
     else: 
         return None
+        

@@ -70,6 +70,8 @@ import sys
 
 from codons import translate_dna
 
+
+
 # You do not need to indent a command-line tool's code under
 # a 'if __name__ == __main__:' construction, but it is common
 # practise (if not exactly *best* practise). The idea behind
@@ -87,13 +89,13 @@ if __name__ == '__main__':
             pass
         case 2:
             # one argument -- open argv[1] for infile
-            print("Feature not implemented yet.", file=sys.stderr)
-            sys.exit(1)
+            infile = open(sys.argv[1])
+
         case 3:
             # two arguments -- open argv[1] for infile and argv[2]
             # for outfile
-            print("Feature not implemented yet.", file=sys.stderr)
-            sys.exit(1)
+            infile = open(sys.argv[1])
+            outfile = open(sys.argv[2], "w")
         case _:
             # more than two arguments; that is an error
             print("Too many arguments.", file=sys.stderr)
