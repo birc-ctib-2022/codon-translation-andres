@@ -19,6 +19,13 @@ CODON_MAP = {'TTT': 'F', 'TTC': 'F', 'TTA': 'L', 'TTG': 'L',
 
 
 def split_codons(dna: str) -> list[str] | None:
+    if len(dna) % 3 != 0:
+        return None
+    if len(dna) % 3 == 0:
+        cod = []
+        for i in range(0,len(dna),3):
+            cod.append(dna[i:i+3])
+        return cod
     """Split a DNA string into a list of triplets.
 
     If the length of the string is a multiple of tree, then this
@@ -36,7 +43,6 @@ def split_codons(dna: str) -> list[str] | None:
 
     """
     # FIXME: Implement the function
-    return []
 
 
 def translate_codons(codons: list[str]) -> list[str]:
@@ -61,8 +67,15 @@ def translate_codons(codons: list[str]) -> list[str]:
 
     """
     # FIXME: Implement the function
-    return []
 
+    amin = []
+    for codon in codons:
+        codon = codon.upper() # Mayus
+        if codon in CODON_MAP:
+            amin.append(CODON_MAP[codon])
+        else:
+            return None
+    return amin
 
 def translate_dna(dna: str) -> str:
     """Translate a DNA string into its corresponding amino acid string.
@@ -81,4 +94,8 @@ def translate_dna(dna: str) -> str:
 
     """
     # FIXME: Implement the function
-    return ""
+    if split_codons(dna) != None and translate_codons(split_codons(dna)) != None:
+        return  "".join(translate_codons(split_codons(dna))) #Concatenar string
+    else: 
+        return None
+        
